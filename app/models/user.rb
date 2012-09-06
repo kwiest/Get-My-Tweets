@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password_hash, :password_salt
+  attr_accessible :email, :password
   has_secure_password
 
   validates :email, presence: true, uniqueness: true, email: true

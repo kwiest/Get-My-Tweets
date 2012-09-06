@@ -1,0 +1,29 @@
+form.user-session {
+  text-align: center;
+
+  div.input-field {
+    margin-bottom: 18px;
+
+    input[type=text], input[type=password] {
+      padding: 10px 12px;
+      font-size: 18px;
+      width: 300px;
+      border: 1px solid #bbb;
+      @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.25));
+      @include border-radius(4px);
+    }
+
+    .help {
+      a, a:hover, a:visited, a:active {
+        text-decoration: none;
+        color: $blue;
+      }
+    }
+  }
+
+  #session-submit {
+    @include button;
+    font-size: 18px;
+    width: 300px;
+  }
+}

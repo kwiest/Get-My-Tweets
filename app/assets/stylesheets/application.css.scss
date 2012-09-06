@@ -9,11 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
+
+$blue: #4294f0;
+$red:  #ff1d0c;
+$green: #468847;
 
 @import 'bourbon';
 @import 'neat';
+@import 'forms';
+
 
 html, body {
   margin: 0;
@@ -26,12 +31,42 @@ html, body {
   }
 }
 
+body {
+  background: url('/assets/background.png') top left repeat;
+}
+
 header {
   margin-bottom: 30px;
 }
 
+#flash {
+  margin: 18px;
+  padding: 8px 35px 8px 14px;
+  border: 1px solid;
+  @include border-radius(4px);
+
+  &.flash_alert {
+    color: #b94a48; 
+    background-color: #f2dede;
+    border-color: #eed3d7;
+  }
+
+  &.flash_notice {
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+  }
+}
+
 .container {
   @include outer-container;
-  @include span-columns(6);
-  @include shift(3);
+  @include span-columns(4);
+  @include shift(4);
+
+  #main-content {
+    background: #fff;
+    padding: 20px 10px;
+    @include box-shadow(0 2px 7px rgba(0, 0, 0, 0.4));
+    @include border-radius(4px);
+  }
 }
