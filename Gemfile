@@ -20,13 +20,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'bcrypt-ruby',  '~> 3.0.0'
 gem 'jquery-rails', '~> 2.1.1'
 
 gem 'bourbon',      '~> 2.1.1'
 gem 'neat',         '~> 0.4.2'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+
+group :test do
+  gem 'shoulda', '~> 3.1.1'
+end
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
