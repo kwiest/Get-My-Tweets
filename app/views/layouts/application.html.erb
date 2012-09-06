@@ -7,8 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <div class="container">
+      <h1>My Tweets</h1>
+      <h2>Get all of your Tweets in JSON, no huss, no fuss</h2>
+    </div>
+  </header>
 
-<%= yield %>
+  <section class="container">
+    <div id="main-content">
+      <%= yield %>
+    </div>
+  </section>
 
 </body>
 </html>

@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+@import 'bourbon';
+@import 'neat';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+.container {
+  @include outer-container;
+  @include span-columns(6);
+  @include shift(3);
+}
