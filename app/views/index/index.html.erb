@@ -5,7 +5,7 @@
   </p>
   <%= link_to 'My tweets', '#', class: 'btn' %>
 <% else %>
-  <%= form_tag sign_in_path, class: 'user-session' do %>
+  <%= form_tag sign_in_path, id: 'user-session' do %>
     <h2>Sign in</h2>
 
     <div class="input-field">
