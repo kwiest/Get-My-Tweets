@@ -1,2 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+kyle:
+  email: kyle@example.com
+  password_digest: $2a$10$Es5/13I0oY9F.pNT1FtcTuBkmedfIIt8T43ncLASTsbuYUljt7.lW # 'secret'
