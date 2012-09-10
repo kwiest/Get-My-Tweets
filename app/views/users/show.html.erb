@@ -22,3 +22,22 @@
 
   <%= button_to 'Create a new API Key', api_keys_path, method: :post, remote: true %>
 </div>
+
+<div id="authorizations">
+  <h3>Your Authorized Twitter Accounts</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Created</th>
+        <th>Username</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <p>
+    <%= link_to 'Authorize a new Twitter account' %>
+  </p>
+</div>
