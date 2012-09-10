@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'bcrypt-ruby',  '~> 3.0.0'
 gem 'jquery-rails', '~> 2.1.1'
+gem 'pry',          '~> 0.9.10'
 gem 'sqlite3'
 
 gem 'bourbon',      '~> 2.1.1'
