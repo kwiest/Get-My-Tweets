@@ -1,0 +1,11 @@
+<%= form_for @authorization, html: { class: 'form' } do |f| %>
+  <div class="input-field">
+    <%= f.text_field :username, placeholder: 'Twitter Username' %>
+  </div>
+
+  <%= f.submit 'Authorize with Twitter' %>
+
+  <p>Or</p>
+
+  <%= link_to 'Cancel', root_path %>
+<% end %>

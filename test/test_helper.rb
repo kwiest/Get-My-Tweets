@@ -3,6 +3,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
 require 'mocha'
+require 'vcr'
+
 require 'support/integration_helpers'
 
 class ActiveSupport::TestCase
@@ -18,4 +20,8 @@ end
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include IntegrationHelpers
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'tmp/vcr_cassettes'
 end

@@ -20,8 +20,11 @@
     </tbody>
   </table>
 
-  <%= button_to 'Create a new API Key', api_keys_path, method: :post, remote: true %>
+  <p>
+    <%= button_to 'Create a new API Key', api_keys_path, method: :post, remote: true %>
+  </p>
 </div>
+
 
 <div id="authorizations">
   <h3>Your Authorized Twitter Accounts</h3>
@@ -30,14 +33,16 @@
       <tr>
         <th>Created</th>
         <th>Username</th>
-        <th>Delete</th>
+        <th>Authorized</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
+      <%= render @user.authorizations %>
     </tbody>
   </table>
 
   <p>
-    <%= link_to 'Authorize a new Twitter account' %>
+    <%= button_to 'Authorize a new Twitter account', new_authorization_path, method: :get %>
   </p>
 </div>

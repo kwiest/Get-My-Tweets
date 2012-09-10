@@ -4,6 +4,7 @@ MyTweets::Application.routes.draw do
 
   resources :users, only: %w(new show create destroy)
   resources :api_keys, only: %w(create destroy)
+  resources :authorizations, only: %w(new create destroy)
 
   root to: 'users#show', constraints: AuthenticationConstraint
   root to: 'index#index'

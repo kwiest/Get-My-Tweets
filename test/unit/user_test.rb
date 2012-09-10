@@ -8,4 +8,5 @@ class UserTest < ActiveSupport::TestCase
 
   # Associations
   should have_many(:api_keys)
+  should have_many(:authorizations)
 end
