@@ -1,0 +1,15 @@
+<%= form_for @user, html: { class: 'user-form' } do |f| %>
+  <h2>Create a new account</h2>
+
+  <div class="input-field">
+    <%= f.text_field :email, placeholder: 'Email' %>
+  </div>
+
+  <div class="input-field">
+    <%= f.password_field :password, placeholder: 'Password' %>
+  </div>
+
+  <%= submit_tag 'Create account' %>
+  
+  <p><%= link_to 'I already have an account', root_path %></p>
+<% end %>

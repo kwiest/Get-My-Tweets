@@ -1,28 +1,20 @@
-<% if current_user %>
-  <p>
-    Signed-in as: <%= current_user.email %> |
-    <%= link_to 'sign out', sign_out_path, method: :delete %>
-  </p>
-  <%= link_to 'My tweets', '#', class: 'btn' %>
-<% else %>
-  <%= form_tag sign_in_path, id: 'user-session' do %>
-    <h2>Sign in</h2>
+<%= form_tag sign_in_path, id: 'user-session', class: 'user-form' do %>
+  <h2>Sign in</h2>
 
-    <div class="input-field">
-      <%= text_field_tag :email, nil, placeholder: 'Email' %>
+  <div class="input-field">
+    <%= text_field_tag :email, nil, placeholder: 'Email' %>
+  </div>
+
+  <div class="input-field">
+    <%= password_field_tag :password, nil, placeholder: 'Password' %>
+    <div class="help">
+      <%= link_to 'I forgot my password!' %>
     </div>
+  </div>
 
-    <div class="input-field">
-      <%= password_field_tag :password, nil, placeholder: 'Password' %>
-      <div class="help">
-        <%= link_to 'I forgot my password!' %>
-      </div>
-    </div>
+  <%= submit_tag 'Sign in', id: 'session-submit' %>
 
-    <%= submit_tag 'Sign in', id: 'session-submit' %>
+  <p>Or</p>
 
-    <p>Or</p>
-
-    <%= link_to 'Create an account' %>
-  <% end %>
+  <%= link_to 'Create an account', new_user_path %>
 <% end %>
