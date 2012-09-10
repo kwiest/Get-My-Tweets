@@ -1,0 +1,9 @@
+<%= content_tag_for :tr, api_key do %>
+  <td><%= api_key.created_at.strftime("%B, %Y") %></td>
+  <td><%= api_key.key %></td>
+  <td>
+    <%= link_to 'Delete', api_key_path(api_key), method: 'delete',
+      confirm: 'Are you sure? Any apps using this key will no longer work.',
+      remote: true %>
+  </td>
+<% end %>

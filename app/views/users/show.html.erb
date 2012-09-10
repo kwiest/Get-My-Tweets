@@ -4,4 +4,21 @@
   <%= link_to 'Delete my account', user_path(@user), method: :delete,
     confirm: 'Are you sure you want to delete your account?' %>
 </p>
-<%= link_to 'My tweets', '#', class: 'btn' %>
+
+<div id="api-keys">
+  <h3>Your API Access Keys</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Created</th>
+        <th>Access Key</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @user.api_keys %>
+    </tbody>
+  </table>
+
+  <%= button_to 'Create a new API Key', api_keys_path, method: :post, remote: true %>
+</div>
