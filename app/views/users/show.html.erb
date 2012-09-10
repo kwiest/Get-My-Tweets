@@ -1,5 +1,7 @@
 <p>
   Signed-in as: <%= @user.email %> |
   <%= link_to 'sign out', sign_out_path, method: :delete %>
+  <%= link_to 'Delete my account', user_path(@user), method: :delete,
+    confirm: 'Are you sure you want to delete your account?' %>
 </p>
 <%= link_to 'My tweets', '#', class: 'btn' %>

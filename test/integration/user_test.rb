@@ -14,6 +14,13 @@ class UserTest < ActionDispatch::IntegrationTest
   end
 
   def test_deleting_user
+    reset_session!
+    user = User.create email: 'kyle@example.com', password: 'secret'
+    sign_in user
 
+    user.expects(:destroy).returns true
+    click_link 'Delete my account'
+    assert has_content?('Account successfully deleted'),
+      'Should display flash message that account has been deleted.'
   end
 end

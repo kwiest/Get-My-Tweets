@@ -2,6 +2,8 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
+require 'mocha'
+require 'support/integration_helpers'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
@@ -15,4 +17,5 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
+  include IntegrationHelpers
 end
