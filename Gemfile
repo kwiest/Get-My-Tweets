@@ -41,6 +41,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg',   '~> 0.14.1'
-  gem 'thin', '~> 1.4.1'
+  gem 'pg',       '~> 0.14.1'
+  gem 'rack-ssl', '~> 1.3.2'
+  gem 'thin',     '~> 1.4.1'
 end
