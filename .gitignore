@@ -19,3 +19,6 @@
 
 # Ignore Twitter credentials
 config/initializers/twitter.rb
+
+# Ignore local environment vars
+.env

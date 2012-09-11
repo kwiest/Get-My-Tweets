@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'bcrypt-ruby',  '~> 3.0.0'
 gem 'jquery-rails', '~> 2.1.1'
+gem 'foreman',      '~> 0.57.0'
 gem 'oauth',        '~> 0.4.7'
 gem 'pry',          '~> 0.9.10'
 gem 'sqlite3',      '~> 1.3.6'
@@ -37,4 +38,9 @@ group :test do
   gem 'mocha',    '~> 0.12.3'
   gem 'shoulda',  '~> 3.1.1'
   gem 'vcr',      '~> 2.2.5'
+end
+
+group :production do
+  gem 'pg',   '~> 0.14.1'
+  gem 'thin', '~> 1.4.1'
 end
