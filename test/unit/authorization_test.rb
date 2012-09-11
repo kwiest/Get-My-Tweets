@@ -16,6 +16,7 @@ class AuthorizationTest < ActiveSupport::TestCase
     VCR.use_cassette 'twitter' do
       authorization = @kyle.authorizations.create! username: 'kylewiest'
       refute authorization.oauth_token.nil?
+      refute authorization.oauth_token_secret.nil?
     end
   end
 end

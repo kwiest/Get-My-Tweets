@@ -5,7 +5,7 @@ class Authorization < ActiveRecord::Base
   validates :user, presence: true
   validates :username, presence: true
 
-  before_create :generate_oauth_request_token
+  before_create :generate_oauth_request_tokens
 
   def oauth_authorize_url
     "https://api.twitter.com/oauth/authorize?oauth_token=#{oauth_token}&force_login=true&screename=#{username}"
@@ -14,9 +14,10 @@ class Authorization < ActiveRecord::Base
 
   protected
 
-  def generate_oauth_request_token
+  def generate_oauth_request_tokens
     request_token = oauth_consumer.get_request_token callback: oauth_callback_url
     self.oauth_token = request_token.params.fetch :oauth_token
+    self.oauth_token_secret = request_token.params.fetch :oauth_token_secret
   end
 
   def oauth_callback_url
