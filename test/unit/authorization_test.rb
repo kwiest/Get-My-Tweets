@@ -3,6 +3,10 @@ require 'test_helper'
 class AuthorizationTest < ActiveSupport::TestCase
   def setup
     @kyle = users :kyle
+    @authorization = @kyle.authorizations.create! username: 'kylewiest'
+    callback_params = { 'oauth_token' => 'RGEfT1MVPC3tN3vFyBLyetRx1NDE98TLpWoDs2TOkM',
+      'oauth_verifier' => 'oUT7GBCjtpVaUOK6ojttGeSbhjGLe2b8HKLkETuNok',
+      'controller' => 'authorizations', 'action' => 'edit' }
   end
 
   # Validations
@@ -12,11 +16,11 @@ class AuthorizationTest < ActiveSupport::TestCase
   # Associations
   should belong_to(:user)
 
-  def test_oauth_token_assigned_on_create
+  def test_building_an_oauth_request_token
     VCR.use_cassette 'twitter' do
-      authorization = @kyle.authorizations.create! username: 'kylewiest'
-      refute authorization.oauth_token.nil?
-      refute authorization.oauth_token_secret.nil?
+      assert_equal OAuth::RequestToken, @authorization.send(:oauth_request_token).class,
+        'Should be an OAuth::RequestToken'
     end
   end
+
 end
