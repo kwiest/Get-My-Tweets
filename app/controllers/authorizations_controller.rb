@@ -5,6 +5,10 @@ class AuthorizationsController < ApplicationController
     @authorization = current_user.authorizations.new
   end
 
+  def edit
+    @params = params
+  end
+
   def create
     @authorization = current_user.authorizations.create params[:authorization]
     if @authorization.save
