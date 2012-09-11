@@ -14,7 +14,7 @@ class Authorization < ActiveRecord::Base
   protected
 
   def oauth_callback_url
-    'https://getmytweets.herokuapp.com/oauth/callback'
+    "https://getmytweets.herokuapp.com/oauth/callback/#{id}"
   end
 
   def oauth_consumer

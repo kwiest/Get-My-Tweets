@@ -4,9 +4,6 @@ class AuthorizationTest < ActiveSupport::TestCase
   def setup
     @kyle = users :kyle
     @authorization = @kyle.authorizations.create! username: 'kylewiest'
-    callback_params = { 'oauth_token' => 'RGEfT1MVPC3tN3vFyBLyetRx1NDE98TLpWoDs2TOkM',
-      'oauth_verifier' => 'oUT7GBCjtpVaUOK6ojttGeSbhjGLe2b8HKLkETuNok',
-      'controller' => 'authorizations', 'action' => 'edit' }
   end
 
   # Validations

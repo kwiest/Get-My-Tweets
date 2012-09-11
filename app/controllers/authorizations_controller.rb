@@ -5,10 +5,6 @@ class AuthorizationsController < ApplicationController
     @authorization = current_user.authorizations.new
   end
 
-  def edit
-    @params = params
-  end
-
   def create
     @authorization = current_user.authorizations.create params[:authorization]
     if @authorization.save
@@ -16,6 +12,15 @@ class AuthorizationsController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def update
+    @authorization = current_user.authorizations.find params[:id]
+    @authorization.oauth_token = params[:oauth_token]
+    @authorization.oauth_verifier = params[:oauth_verifier]
+    @authorization.authorized = true
+    @authorization.save
+    redirect_to root_path, notice: 'Twitter account successfully authorized.'
   end
 
   def destroy
