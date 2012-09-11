@@ -1,4 +1,4 @@
-MyTweets::Application.routes.draw do
+GetMyTweets::Application.routes.draw do
   match '/sign_in'  => 'sessions#create', via: 'post'
   match '/sign_out' => 'sessions#destroy', via: 'delete'
 

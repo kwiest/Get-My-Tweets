@@ -9,7 +9,7 @@ gem 'bcrypt-ruby',  '~> 3.0.0'
 gem 'jquery-rails', '~> 2.1.1'
 gem 'oauth',        '~> 0.4.7'
 gem 'pry',          '~> 0.9.10'
-gem 'sqlite3'
+gem 'sqlite3',      '~> 1.3.6'
 
 gem 'bourbon',      '~> 2.1.1'
 gem 'neat',         '~> 0.4.2'
