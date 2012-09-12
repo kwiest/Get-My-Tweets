@@ -22,3 +22,6 @@ config/initializers/twitter.rb
 
 # Ignore local environment vars
 .env
+
+# Ignore bundler binstubs
+/bin
