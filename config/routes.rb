@@ -4,7 +4,7 @@ GetMyTweets::Application.routes.draw do
 
   resources :users, only: %w(new show create destroy)
   resources :api_keys, only: %w(create destroy)
-  resources :authorizations, only: %w(new create destroy)
+  resources :authorizations, only: %w(new show create destroy)
 
   match '/oauth/callback/:id' => 'authorizations#update'
 

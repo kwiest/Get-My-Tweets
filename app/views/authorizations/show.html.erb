@@ -1,0 +1,29 @@
+<h2>Twitter Username: "<%= @authorization.username %>"</h2>
+
+<p>How do I get my tweets?</p>
+
+<p><strong>Using cURL</strong></p>
+<pre class="curl">
+<strong>curl</strong> -i "https://getmytweets.herokuapp.com/my_tweets/<%= @authorization.username %>"
+  -u "one_of_my_api_keys:"
+</pre>
+
+<span class="highlight"><strong>Note:</strong> the ':' is required after your API key</span>
+
+<pre class="response">
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+</pre>
+
+
+<p><strong>Using jQuery</strong></p>
+<pre class="jquery">
+$.ajax({
+  url: "https://getmytweets.herokuapp.com/my_tweets/<%= @authorization.username %>",
+  dataType: "json",
+  username: "one_of_my_api_keys",
+  success: function(data) {
+    process_my_tweets(data); // Your data-handling here
+  }
+});
+</pre>

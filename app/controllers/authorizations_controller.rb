@@ -1,5 +1,9 @@
 class AuthorizationsController < ApplicationController
   before_filter :require_sign_in
+  before_filter :assign_authorization, only: %w(show update destroy)
+
+  def show
+  end
 
   def new
     @authorization = current_user.authorizations.new
@@ -15,7 +19,6 @@ class AuthorizationsController < ApplicationController
   end
 
   def update
-    @authorization = current_user.authorizations.find params[:id]
     @authorization.oauth_token = params[:oauth_token]
     @authorization.oauth_verifier = params[:oauth_verifier]
     @authorization.authorized = true
@@ -24,8 +27,14 @@ class AuthorizationsController < ApplicationController
   end
 
   def destroy
-    @authorization = current_user.authorizations.find params[:id]
     @authorization.destroy
     respond_to :js
+  end
+
+
+  protected
+
+  def assign_authorization
+    @authorization = current_user.authorizations.find params[:id]
   end
 end

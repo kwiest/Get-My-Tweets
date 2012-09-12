@@ -3,11 +3,13 @@
   <td><%= authorization.username %></td>
   <td><%= authorization.authorized? %></td>
   <td>
+    <% if authorization.authorized? %>
+      <%= link_to 'Show', authorization_path(authorization) %>
+    <% else %>
+      <%= link_to 'Authorize', authorization.oauth_authorize_url %>
+    <% end %>
     <%= link_to 'Delete', authorization_path(authorization), method: 'delete',
       confirm: 'Are you sure? You will not be able to access any more tweets.',
       remote: true %>
-    <% unless authorization.authorized? %>
-      <%= link_to 'Authorize', authorization.oauth_authorize_url %>
-    <% end %>
   </td>
 <% end %>
