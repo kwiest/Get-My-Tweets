@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911233429) do
+ActiveRecord::Schema.define(:version => 20120910182550) do
 
   create_table "api_keys", :force => true do |t|
     t.integer  "user_id"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(:version => 20120911233429) do
     t.integer  "user_id"
     t.string   "username"
     t.string   "oauth_token"
-    t.string   "oauth_verifier"
-    t.boolean  "authorized",     :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.string   "oauth_token_secret"
+    t.boolean  "authorized",         :default => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   create_table "users", :force => true do |t|
