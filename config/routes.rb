@@ -8,6 +8,8 @@ GetMyTweets::Application.routes.draw do
 
   match '/oauth/callback/:id' => 'authorizations#update'
 
+  match '/my_tweets/:username' => 'tweets#index'
+
   root to: 'users#show', constraints: AuthenticationConstraint
   root to: 'index#index'
 end
