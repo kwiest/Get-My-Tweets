@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
 
   def index
     authorization = @user.authorizations.find_by_username params[:username]
-    render json: authorization.make_twitter_request(:home_timeline)
+    render json: authorization.make_twitter_request(:user_timeline)
   end
 
 
