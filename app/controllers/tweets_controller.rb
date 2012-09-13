@@ -14,6 +14,7 @@ class TweetsController < ApplicationController
     authenticate_with_http_basic do |username, password|
       @api_key = ApiKey.find_by_key username
     end
+    head :unauthorized unless @api_key
     @user = @api_key.user
   end
 end
