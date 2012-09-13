@@ -22,4 +22,23 @@ class AuthorizationTest < ActiveSupport::TestCase
     end
   end
 
+  def test_authorizing_with_twitter
+    # Stub out since we can't authorize with Twitter
+    access_token = OpenStruct.new token: '123', secret: '456'
+    client       = OpenStruct.new authorize: true, authorized?: true
+    @authorization.stubs(:build_oauth_access_token).returns access_token
+    @authorization.stubs(:twitter_client).returns client
+
+    @authorization.authorize_with_twitter 'abc', 'def', 'ghi'
+    assert_equal '123', @authorization.oauth_token
+    assert_equal '456', @authorization.oauth_token_secret
+    assert @authorization.authorized?
+  end
+
+  def test_raise_exception_on_unauthorized_request
+    assert_raise RuntimeError do
+      @authorization.make_twitter_request :home_timeline
+    end
+  end
+
 end

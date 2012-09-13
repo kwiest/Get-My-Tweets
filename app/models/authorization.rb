@@ -17,6 +17,11 @@ class Authorization < ActiveRecord::Base
     end
   end
 
+  def make_twitter_request(resource)
+    raise 'Unauthorized Request' unless authorized?
+    authorized_twitter_client.send resource
+  end
+
   def oauth_authorize_url
     twitter_request_token.authorize_url force_login: 'true', screen_name: username,
       oauth_callback: oauth_callback_url
@@ -29,12 +34,18 @@ class Authorization < ActiveRecord::Base
 
   private
 
-  def oauth_callback_url
-    "#{ENV['TWITTER_CALLBACK_URL']}/#{id}"
+  def authorized_twitter_client
+    TwitterOAuth::Client.new consumer_key: ENV['TWITTER_CONSUMER_KEY'],
+      consumer_secret: ENV['TWITTER_CONSUMER_SECRET'],
+      token: oauth_token, secret: oauth_token_secret
   end
 
   def build_oauth_access_token(request_token, request_token_secret, oauth_verifier)
     twitter_client.authorize request_token, request_token_secret, oauth_verifier: oauth_verifier
+  end
+
+  def oauth_callback_url
+    "#{ENV['TWITTER_CALLBACK_URL']}/#{id}"
   end
 
   def twitter_client
