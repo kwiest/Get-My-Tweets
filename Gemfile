@@ -5,11 +5,11 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'bcrypt-ruby',  '~> 3.0.0'
-gem 'jquery-rails', '~> 2.1.1'
-gem 'foreman',      '~> 0.57.0'
-gem 'oauth',        '~> 0.4.7'
-gem 'pry',          '~> 0.9.10'
+gem 'bcrypt-ruby',   '~> 3.0.0'
+gem 'jquery-rails',  '~> 2.1.1'
+gem 'foreman',       '~> 0.57.0'
+gem 'pry',           '~> 0.9.10'
+gem 'twitter_oauth', '~> 0.4.3'
 
 
 # Gems used only for assets and not required

@@ -3,7 +3,7 @@ require 'test_helper'
 class AuthorizationTest < ActiveSupport::TestCase
   def setup
     @kyle = users :kyle
-    @authorization = @kyle.authorizations.create! username: 'kylewiest'
+    @authorization = @kyle.authorizations.create! username: 'test'
   end
 
   # Validations
@@ -13,10 +13,12 @@ class AuthorizationTest < ActiveSupport::TestCase
   # Associations
   should belong_to(:user)
 
-  def test_building_an_oauth_request_token
+
+  def test_retrieving_request_tokens
     VCR.use_cassette 'twitter' do
-      assert_equal OAuth::RequestToken, @authorization.send(:oauth_request_token).class,
-        'Should be an OAuth::RequestToken'
+      token  = @authorization.send(:twitter_request_token).token
+      secret = @authorization.send(:twitter_request_token).secret
+      assert_equal [token, secret], @authorization.request_tokens
     end
   end
 
