@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
   respond_to :json
+  before_filter :set_cors_headers
   before_filter :authenticate_user
+  skip_before_filter :verifty_authenticity_token
 
   def index
     authorization = @user.authorizations.find_by_username params[:username]
@@ -17,5 +19,11 @@ class TweetsController < ApplicationController
     end
     head :unauthorized and return unless @api_key
     @user = @api_key.user
+  end
+
+  def set_cors_headers
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET'
+    response.headers['Access-Control-Allow-Headers'] = '*, Authorization, X-Requested-With, X-Prototype-Version, X-CRSF-Token, Content-Type'
   end
 end
