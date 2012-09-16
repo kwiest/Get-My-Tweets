@@ -19,11 +19,20 @@ Content-Type: application/json; charset=utf-8
 <p><strong>Using jQuery</strong></p>
 <pre class="jquery">
 $.ajax({
-  url: "https://getmytweets.herokuapp.com/my_tweets/<%= @authorization.username %>",
+  url: "https://getmytweets.herokuapp.com/my_tweets/OregonGridiron",
   dataType: "json",
-  username: "one_of_my_api_keys",
+  beforeSend: function(req) {
+    req.setRequestHeader("Authorization", "Basic base64-encoded-api-key");
+    // API Key must include ':' after, and be base64 encoded
+  },
+  crossDomain: true,
   success: function(data) {
-    process_my_tweets(data); // Your data-handling here
+    console.log(data); // Your data-handling here
   }
 });
 </pre>
+
+<span class="highlight">
+  <strong>Note:</strong> the ':' is required after your API key, and the whole string
+  must be base64 encoded. <%= link_to 'Available library', 'http://ostermiller.org/calc/encode.html' %>
+</span>
