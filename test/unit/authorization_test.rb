@@ -41,4 +41,15 @@ class AuthorizationTest < ActiveSupport::TestCase
     end
   end
 
+  def test_passing_options_with_twitter_requests
+    fake_twitter_client = Class.new do
+      def home_timeline(options={}); true; end
+    end
+    @authorization.stubs(:authorized?).returns true
+    @authorization.stubs(:authorized_twitter_client).returns fake_twitter_client
+
+    fake_twitter_client.expects(:home_timeline).with count: 5
+    @authorization.make_twitter_request :home_timeline, count: 5
+  end
+
 end

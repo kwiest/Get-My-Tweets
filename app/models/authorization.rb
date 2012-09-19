@@ -17,9 +17,9 @@ class Authorization < ActiveRecord::Base
     end
   end
 
-  def make_twitter_request(resource)
+  def make_twitter_request(resource, options={})
     raise 'Unauthorized Request' unless authorized?
-    authorized_twitter_client.send resource
+    authorized_twitter_client.public_send resource, options
   end
 
   def oauth_authorize_url
