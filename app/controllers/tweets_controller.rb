@@ -6,7 +6,8 @@ class TweetsController < ApplicationController
 
   def index
     authorization = @user.authorizations.find_by_username params[:username]
-    render json: authorization.make_twitter_request(:user_timeline)
+    options = params.fetch :options, {}
+    render json: authorization.make_twitter_request(:user_timeline, options)
   end
 
 
@@ -22,7 +23,7 @@ class TweetsController < ApplicationController
   end
 
   def set_cors_headers
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Origin']  = '*'
     response.headers['Access-Control-Allow-Methods'] = 'GET'
     response.headers['Access-Control-Allow-Headers'] = '*, Authorization, X-Requested-With, X-Prototype-Version, X-CRSF-Token, Content-Type'
   end
