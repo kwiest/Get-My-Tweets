@@ -7,6 +7,8 @@ table.table {
   thead {
     display: table-header-group;
     vertical-align: middle;
+
+    th { text-align: left; }
   }
 
   tr {
