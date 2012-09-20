@@ -16,7 +16,6 @@ $red:  #ff1d0c;
 $green: #468847;
 
 @import 'bourbon';
-@import 'neat';
 @import 'forms';
 @import 'tables';
 @import 'code';
@@ -26,6 +25,7 @@ html, body {
   margin: 0;
   padding: 0;
   color: #333;
+  font-family: $helvetica;
 
   h1, h2, h3, h4, h5 {
     font-family: 'Changa One', arial, sans-serif;
@@ -61,13 +61,13 @@ header {
 }
 
 .container {
-  @include outer-container;
-  @include span-columns(4);
-  @include shift(4);
+  width: 600px;
+  margin: 0 auto;
 
   #main-content {
     background: #fff;
     padding: 20px 10px;
+    margin-bottom: 50px;
     @include box-shadow(0 2px 7px rgba(0, 0, 0, 0.4));
     @include border-radius(4px);
   }
