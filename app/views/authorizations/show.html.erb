@@ -4,11 +4,13 @@
 
 <p><strong>Using cURL</strong></p>
 <pre class="curl">
-<strong>curl</strong> -i "https://getmytweets.herokuapp.com/my_tweets/<%= @authorization.username %>"
-  -u "one_of_my_api_keys:"
+<strong>curl</strong> -i "https://getmytweets.herokuapp.com/my_tweets/<%= @authorization.username %>" \
+  -u "one_of_my_api_keys:" \
 </pre>
 
-<span class="highlight"><strong>Note:</strong> the ':' is required after your API key</span>
+<p>
+  <span class="highlight"><strong>Note:</strong> the ':' is required after your API key</span>
+</p>
 
 <pre class="response">
 HTTP/1.1 200 OK
@@ -32,8 +34,30 @@ $.ajax({
 });
 </pre>
 
-<span class="highlight">
-  <strong>Note:</strong> the ':' is required after your API key, and the whole string
-  must be base64 encoded.
-</span>
+<p>
+  <span class="highlight">
+    <strong>Note:</strong> the ':' is required after your API key, and the whole string
+    must be base64 encoded.
+  </span>
+</p>
 <%= link_to 'Javascript library to base64 encode', 'http://ostermiller.org/calc/encode.html' %>
+
+<h2>Options</h2>
+
+<p>You can pass any parameters using the <code>options</code> parameter.</p>
+
+<p>
+  All available parameters are listed on the
+  <%= link_to 'Twitter API Reference', 'https://dev.twitter.com/docs/api/1.1/get/statuses/home_timeline' %>.
+</p>
+
+<p>
+  For example, to specify the number of tweets retrieved, use the <code>count</code> parameter. If you were
+  using <strong>cURL</strong>, you would add:
+</p>
+
+<pre>-d "options[count]=10"</pre>
+
+<p>If using <strong>jQuery</strong>, you would need to add a <code>data</code> option in your <code>.ajax</code> call.</p>
+
+<pre>data: { "options[count]": "10" }</pre>
