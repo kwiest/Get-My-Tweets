@@ -15,7 +15,6 @@ class TweetsController < ApplicationController
 
   def authenticate_user
     authenticate_with_http_basic do |username, password|
-      Rails.logger.info "[API REQUEST] Authentication: #{username}:#{password}"
       @api_key = ApiKey.find_by_key username
     end
     head :unauthorized and return unless @api_key
