@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   respond_to :json
-  before_filter :authenticate_user
   before_filter :set_cors_headers
+  before_filter :authenticate_user
   skip_before_filter :verifty_authenticity_token
 
   def index
@@ -23,6 +23,7 @@ class TweetsController < ApplicationController
   end
 
   def set_cors_headers
+    Rails.logger.info "Request Headers: #{request.headers}"
     response.headers['Access-Control-Allow-Headers'] = '*, Authorization, X-Requested-With, X-Prototype-Version, X-CRSF-Token, Content-Type'
     response.headers['Access-Control-Allow-Methods'] = 'GET'
     response.headers['Access-Control-Allow-Origin']  = 'http://oregongridiron.com'
