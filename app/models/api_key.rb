@@ -1,8 +1,9 @@
 class ApiKey < ActiveRecord::Base
-  attr_accessible :user_id
+  attr_accessible :user_id, :remote_uri
   belongs_to :user
 
   validates :user, presence: true
+  validates :remote_uri, presence: true
 
   before_validation :generate_key
 
