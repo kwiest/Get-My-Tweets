@@ -33,7 +33,7 @@ end
 group :test do
   gem 'capybara', '~> 1.1.2'
   gem 'fakeweb',  '~> 1.3.0'
-  gem 'mocha',    '~> 0.12.3'
+  gem 'mocha',    '~> 0.12.3', require: false
   gem 'shoulda',  '~> 3.1.1'
   gem 'vcr',      '~> 2.2.5'
 end
