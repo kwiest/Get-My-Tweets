@@ -7,7 +7,8 @@ class TweetsController < ApplicationController
   def index
     authorization = @user.authorizations.find_by_username params[:username]
     options = params.fetch :options, {}
-    render json: authorization.make_twitter_request(:user_timeline, options)
+    timeline = authorization.make_twitter_request :user_timeline, options
+    render json: timeline
   end
 
 
