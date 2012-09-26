@@ -1,7 +1,6 @@
 class TweetsController < ApplicationController
   respond_to :json
-  before_filter :set_cors_headers
-  before_filter :authenticate_user
+  before_filter :cors_request?
   skip_before_filter :verifty_authenticity_token
 
   def index
@@ -13,6 +12,17 @@ class TweetsController < ApplicationController
 
 
   private
+
+  def cors_request?
+    case request.method
+    when 'GET'
+      authenticate_user
+    when 'OPTIONS'
+      set_cors_headers
+    else
+      head :unauthorized
+    end
+  end
 
   def authenticate_user
     authenticate_with_http_basic do |username, password|
