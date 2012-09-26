@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_filter :set_cors_headers
   respond_to :json
 
   def index
