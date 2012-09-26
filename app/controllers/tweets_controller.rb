@@ -23,9 +23,8 @@ class TweetsController < ApplicationController
   end
 
   def set_cors_headers
-    Rails.logger.info "Request Headers: #{request.headers}"
     response.headers['Access-Control-Allow-Headers'] = '*, Authorization, X-Requested-With, X-Prototype-Version, X-CRSF-Token, Content-Type'
-    response.headers['Access-Control-Allow-Methods'] = 'GET'
-    response.headers['Access-Control-Allow-Origin']  = 'http://oregongridiron.com'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+    response.headers['Access-Control-Allow-Origin']  = '*'
   end
 end
