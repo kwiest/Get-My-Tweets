@@ -1,8 +1,11 @@
 class TweetsController < ApplicationController
   respond_to :json
-  before_filter :determine_cors_request_type
+  #before_filter :determine_cors_request_type
+  before_filter :set_cors_headers
+  before_filter :authenticate_user
 
   def index
+    send_twitter_json_response
   end
 
 
