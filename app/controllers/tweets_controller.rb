@@ -26,12 +26,14 @@ class TweetsController < ApplicationController
   end
 
   def set_cors_headers
+    Rails.logger.info 'Setting CORS Headers'
     response.headers['Access-Control-Allow-Headers'] = '*, Authorization, X-Requested-With, X-Prototype-Version, X-CRSF-Token, Content-Type'
     response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
     response.headers['Access-Control-Allow-Origin']  = '*'
   end
 
   def authenticate_user
+    Rails.logger.info 'Authenticating user by API key'
     authenticate_with_http_basic do |username, password|
       @api_key = ApiKey.find_by_key username
     end
