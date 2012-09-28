@@ -9,12 +9,8 @@
 <p><strong>Using cURL</strong></p>
 <pre class="curl">
 <strong>curl</strong> -i "https://getmytweets.herokuapp.com/my_tweets/<%= @authorization.username %>" \
-  -u "one_of_my_api_keys:" \
+  -d "api_key=my_api_key"
 </pre>
-
-<p>
-  <span class="highlight"><strong>Note:</strong> the ':' is required after your API key</span>
-</p>
 
 <pre class="response">
 HTTP/1.1 200 OK
@@ -27,24 +23,14 @@ Content-Type: application/json; charset=utf-8
 $.ajax({
   url: "https://getmytweets.herokuapp.com/my_tweets/OregonGridiron",
   dataType: "json",
-  beforeSend: function(req) {
-    req.setRequestHeader("Authorization", "Basic base64-encoded-api-key");
-    // API Key must include ':' after, and be base64 encoded
-  },
   crossDomain: true,
+  data: { "api_key": "my_api_key" }, // One of your API Keys
   success: function(data) {
     console.log(data); // Your data-handling here
   }
 });
 </pre>
 
-<p>
-  <span class="highlight">
-    <strong>Note:</strong> the ':' is required after your API key, and the whole string
-    must be base64 encoded.
-  </span>
-</p>
-<%= link_to 'Javascript library to base64 encode', 'http://ostermiller.org/calc/encode.html' %>
 
 <h2>Options</h2>
 
